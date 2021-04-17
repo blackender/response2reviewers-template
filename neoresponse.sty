@@ -1,0 +1,75 @@
+%% Simple LaTeX class for responses to journal reviews
+%% 
+%% Copyright (C) 2021 Nathan Wu. 
+%% Written by Nathan Wu.
+%% Distributed under the terms of the CC-BY-SA v3.0 Licence
+%%
+%% The neoresponse class is based on macros defined by
+%% Friedemann Zenke and published in an example rebuttal at:
+%% 
+%% Licensed under cc by-sa 3.0 with attribution required.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rebuttal}[2019/02/06 v0.1.0 (S. Butler)]
+
+\RequirePackage{xifthen}
+\RequirePackage{changepage}
+\RequirePackage{color}
+
+\newcommand{\neoresponseskip}{\bigskip}
+
+\DeclareOption{table}{
+  \renewcommand{\neoresponseskip}{}
+}
+\DeclareOption{plain}{
+  \renewcommand{\neoresponseskip}{\bigskip}
+}
+\ExecuteOptions{plain}
+\ProcessOptions
+
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{comment}[reviewer]
+\setcounter{comment}{0}
+\newcounter{response}[reviewer]
+\setcounter{response}{0}
+
+
+% Format the reviewer/point reference.
+\renewcommand{\thecomment}{\thereviewer.\arabic{comment}}
+\renewcommand{\theresponse}{\thereviewer.\arabic{response}} 
+
+% Heading for reviewer section
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip 
+                  \section*{ \centering Response to Reviewer \#\thereviewer's Comments}}
+
+% comment                  
+\newenvironment{comment}{%
+    \begin{adjustwidth}{2em}{1em}
+      \refstepcounter{comment}{\neoresponseskip\noindent\textbf{$\bullet$ Reviewer’s Comment~C\thecomment}}:\ %
+  }{%
+    \end{adjustwidth}%
+    \par%
+}%
+
+% response                  
+\newenvironment{response}{%
+    \begin{adjustwidth}{2em}{1em}
+      \refstepcounter{response}{\neoresponseskip\noindent\textbf{\emph{Authors' Reply~R}\theresponse}}:\ %
+  }{%
+    \end{adjustwidth}%
+    \par%
+}%
+
+% recompose
+\newenvironment{recompose}{
+    \color{blue}
+    \begin{adjustwidth}{2em}{1em}
+      ``
+  }{''
+    \end{adjustwidth}%
+    \par%
+}
+
+\endinput
