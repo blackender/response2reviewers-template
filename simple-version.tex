@@ -1,0 +1,123 @@
+%%
+%% Example of plain layout for neoresponse.sty
+%% 
+%% Copyright (C) 2021 Nathan Wu. 
+%% Written by Nathan Wu.
+%% Distributed under the terms of the CC-BY-SA v3.0 Licence
+%%
+%% 
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+
+\usepackage{lineno}
+
+\usepackage[cm]{fullpage}
+\usepackage{fancyhdr}
+\fancypagestyle{mypage}{
+	\fancyfoot[C]{\thepage \\ \textcolor[RGB]{96,96,96}{PLEASE KEEP CONFIDENTIAL} }}
+\pagestyle{mypage}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+\usepackage{neoresponse}
+
+\usepackage[parfill]{parskip}
+\usepackage{lipsum}
+
+\begin{document}
+
+\pagewiselinenumbers
+
+\begin{center}
+	\section*{\Huge Response to reviewers’ comments on manuscript}	
+\end{center}
+
+\hrule
+
+% --- basic letter
+
+
+%Dear Journal Editor
+%
+%Thank you for considering our paper ``A Journal Article'' for publication in the ``Journal of Something''. We are very grateful for the time the reviewers have taken to provide their extensive and constructive feedback.
+%
+%We address their points individually below and indicate the changes we have made in response.
+%
+%Yours sincerely
+
+\hspace{2cm}
+
+
+%A Researcher
+
+% First reviewer
+\reviewersection
+
+\textit{We thank the reviewer for his or her comments and suggestions;
+revisions we made in response to each comment are described below.}
+
+\begin{comment}
+	\lipsum[2]
+	\label{R1:Point}
+\end{comment}
+
+\begin{response}
+	\lipsum[3]
+\end{response}
+
+\begin{recompose}
+	The modified content ...
+\end{recompose}  
+
+\begin{comment}
+	\lipsum[11]
+\end{comment}
+
+\begin{response}
+Thank you for the suggestion. The second reviewer makes a related point and we address your comments in detail in our response to R\ref{R1:Point}.
+\end{response}
+
+\begin{recompose}
+	The modified content ...
+\end{recompose} 
+
+\clearpage
+
+% Second reviewer section
+\reviewersection
+
+\textit{We thank the reviewer for his or her comments and suggestions;
+revisions we made in response to each comment are described below.}
+
+\begin{comment}
+	\lipsum[2]
+	\label{R2:Point}
+\end{comment}
+
+\begin{response}
+	\lipsum[3]
+\end{response}
+
+\begin{recompose}
+	The modified content ...
+\end{recompose}  
+
+\begin{comment}
+	\lipsum[11]
+\end{comment}
+
+\begin{response}
+Thank you for the suggestion. The second reviewer makes a related point and we address your comments in detail in our response to R\ref{R2:Point}.
+\end{response}
+
+\begin{recompose}
+	The modified content ...
+\end{recompose} 
+
+
+\end{document}
+
+
